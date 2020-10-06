@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
-import unittest, time, re
-import random
+import unittest
 from group import Group
 
 class test_add_group(unittest.TestCase):
