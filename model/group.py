@@ -1,3 +1,5 @@
+__author__ = "tk"
+
 class Group:
 
     def __init__(self, name, header, footer):
