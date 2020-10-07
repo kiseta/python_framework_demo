@@ -1,4 +1,4 @@
-__author__ = "tk"
+__author__ = 'tk'
 
 from selenium import webdriver
 from fixture.session import SessionHelper
