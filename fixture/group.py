@@ -1,5 +1,6 @@
-__author__ = 'tk'
+from model.group import Group
 
+__author__ = 'tk'
 
 class GroupHelper:
 
@@ -69,3 +70,7 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def check_group_present(self, groupname, groupheader, groupfooter):
+        if self.count() == 0:
+            self.create(Group(name=groupname, header=groupheader, footer=groupfooter))
