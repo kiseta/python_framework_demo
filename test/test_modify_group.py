@@ -10,7 +10,7 @@ def test_modify_first_group_name(app):
     print("Original Groups Count: " + str(len(old_groups)))
 
     app.group.modify_first_group(Group(name="Modified Group Name"))
-    
+
     new_groups = app.group.get_group_list()
     print("New Groups Count: " + str(len(new_groups)))
     assert len(old_groups)  == len(new_groups)
