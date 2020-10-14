@@ -5,7 +5,7 @@ from random import randrange
 
 
 def test_modify_first_group_name(app):
-    app.group.check_group_present("Original Group Name ","Original Header", "Original Footer")
+    app.group.check_group_present()
 
     old_groups = app.group.get_group_list()
     print("Original Groups Count: " + str(len(old_groups)))

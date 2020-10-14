@@ -4,7 +4,7 @@ from random import randrange
 
 
 def test_delete_random_group(app):
-    app.group.check_group_present("Test Name","Test Header", "Test Footer")
+    app.group.check_group_present()
 
     old_groups = app.group.get_group_list()
 

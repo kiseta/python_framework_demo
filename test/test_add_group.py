@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
+from fixture.group import GROUP
 from model.group import Group
 
 
 def test_add_group(app):
     old_groups = app.group.get_group_list()
     print("Original Groups Count: " + str(len(old_groups)))
-    group = Group(name="asd234", header="asd35", footer="asd234")
+    group = GROUP
     app.group.create(group)
     print("New Groups Count: " + str(app.group.count()))
     assert len(old_groups) + 1 == app.group.count()

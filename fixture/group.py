@@ -1,6 +1,12 @@
-from model.group import Group
-
 __author__ = 'tk'
+
+from model.group import Group
+import random
+import string
+
+rnd = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(9)])
+GROUP = Group(name="Name" + rnd, header="Hdr" + rnd, footer="Ftr" + rnd)
+
 
 class GroupHelper:
 
@@ -14,15 +20,10 @@ class GroupHelper:
 
     def create(self, group):
         wd = self.app.wd
-        # open group page
         self.open_groups_page()
-        # init group create
         wd.find_element_by_name("new").click()
-        # fill out new group form
         self.fill_group_form(group)
-        # group create submit
         wd.find_element_by_name("submit").click()
-        # return to group page
         self.return_to_groups_page()
         self.group_cache = None
 
@@ -99,6 +100,8 @@ class GroupHelper:
         return list(self.group_cache)
 
 
-    def check_group_present(self, groupname, groupheader, groupfooter):
+    def check_group_present(self):
         if self.count() == 0:
-            self.create(Group(name=groupname, header=groupheader, footer=groupfooter))
+            self.create(GROUP)
+
+
