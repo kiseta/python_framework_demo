@@ -6,6 +6,7 @@ import string
 
 rnd = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(9)])
 GROUP = Group(name="Name" + rnd, header="Hdr" + rnd, footer="Ftr" + rnd)
+GROUP_BLANK = Group(name="", header="", footer="")
 
 
 class GroupHelper:
