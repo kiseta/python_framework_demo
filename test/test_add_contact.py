@@ -12,6 +12,6 @@ def generate_contact_data():
 
 
 def test_add_new_contact(app):
-    for i in range(7):
+    for i in range(3):
         generate_contact_data()
         app.contact.create(CONTACT)
