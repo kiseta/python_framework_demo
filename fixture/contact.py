@@ -1,7 +1,6 @@
 __author__ = 'tk'
 
 from model.contact import Contact
-from fixture import group
 import re
 
 

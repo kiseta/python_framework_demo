@@ -1,17 +1,11 @@
+# -*- coding: utf-8 -*-
+__author__ = 'tk'
+
 from model.contact import Contact
-from faker import Faker
-fake = Faker('en_US')
+import pytest
+from data.add_contact import fakedata
 
 
-def generate_contact_data():
-    global CONTACT
-    CONTACT = Contact(firstname=fake.first_name(), lastname=fake.last_name(),
-                      address=fake.address(), homephone=fake.phone_number(),
-                      mobilephone=fake.phone_number(), workphone=fake.phone_number(),
-                      email=fake.email(), secondaryphone=fake.phone_number())
-
-
-def test_add_new_contact(app):
-    for i in range(3):
-        generate_contact_data()
-        app.contact.create(CONTACT)
+@pytest.mark.parametrize("contact", fakedata, ids=[repr(x) for x in fakedata])
+def test_add_new_contact(app, contact):
+    app.contact.create(contact)
