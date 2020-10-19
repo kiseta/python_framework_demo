@@ -1,15 +1,13 @@
 __author__ = 'tk'
 
-import random
-import string
 from model.group import Group
 from faker import Faker
 
 fake = Faker('en_US')
 
-constant = [
+testdata = [
     Group(name="name1", header="header1", footer="footer1"),
-    Group(name="name2", header="header3", footer="footer4")
+    Group(name="name2", header="header2", footer="footer2")
 ]
 
 fakedata = [
