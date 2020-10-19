@@ -2,7 +2,7 @@
 __author__ = 'tk'
 from model.group import Group
 import pytest
-from data.add_group import fakedata as testdata
+from data.groups import fakedata as testdata
 
 
 @pytest.mark.parametrize("group", testdata, ids=[repr(x) for x in testdata])
