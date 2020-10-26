@@ -2,6 +2,7 @@ __author__ = 'tk'
 
 import pytest
 import json
+import jsonpickle
 import os.path
 from fixture.application import Application
 import importlib
@@ -44,7 +45,14 @@ def pytest_generate_tests(metafunc):
         if fixture.startswith("data_"):
             testdata = load_form_module(fixture[5:])
             metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
+        elif fixture.startswith("json_"):
+            testdata = load_form_json(fixture[5:])
+            metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
 
 
 def load_form_module(module):
     return importlib.import_module("data.%s" % module).testdata
+
+def load_form_json(file):
+    with open (os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
+        return jsonpickle.decode(f.read())
