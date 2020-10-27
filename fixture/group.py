@@ -19,6 +19,19 @@ class GroupHelper:
         if not(wd.current_url.endswith("/group.php") and len(wd.find_elements_by_name("new")) > 0):
             wd.find_element_by_link_text("groups").click()
 
+    def change_field_value(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
+
+    def fill_group_form(self, group):
+        wd = self.app.wd
+        self.change_field_value("group_name", group.name)
+        self.change_field_value("group_header", group.header)
+        self.change_field_value("group_footer", group.footer)
+
     def create(self, group):
         wd = self.app.wd
         self.open_groups_page()
@@ -28,22 +41,17 @@ class GroupHelper:
         self.return_to_groups_page()
         self.group_cache = None
 
-    def fill_group_form(self, group):
+    def select_first_group(self):
         wd = self.app.wd
-        self.change_field_value("group_name", group.name)
-        self.change_field_value("group_header", group.header)
-        self.change_field_value("group_footer", group.footer)
-
-    def change_field_value(self, field_name, text):
-        wd = self.app.wd
-        if text is not None:
-            wd.find_element_by_name(field_name).click()
-            wd.find_element_by_name(field_name).clear()
-            wd.find_element_by_name(field_name).send_keys(text)
+        wd.find_element_by_name("selected[]").click()
 
     def select_group_by_index(self, index):
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
+
+    def select_group_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
     def delete_first_group(self):
         self.delete_group_by_index(0)
@@ -56,10 +64,6 @@ class GroupHelper:
         wd.find_element_by_name("delete").click()
         self.return_to_groups_page()
         self.group_cache = None
-
-    def select_first_group(self):
-        wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
 
     def modify_first_group(self):
         self.modify_group_by_index(0)
@@ -104,5 +108,3 @@ class GroupHelper:
     def check_group_present(self):
         if self.count() == 0:
             self.create(GROUP)
-
-
