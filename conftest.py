@@ -2,9 +2,9 @@ __author__ = 'tk'
 
 import pytest
 import json
-import jsonpickle
 import os.path
 import importlib
+import jsonpickle
 from fixture.application import Application
 from fixture.db import DbFixture
 
@@ -23,7 +23,6 @@ def load_config(file):
 @pytest.fixture
 def app(request):
     global fixture
-    global target
     browser = request.config.getoption("--browser")
     web_config = load_config(request.config.getoption("--target"))['web']
     if fixture is None or not fixture.is_valid():
@@ -34,7 +33,7 @@ def app(request):
 @pytest.fixture (scope="session")
 def db(request):
     db_config = load_config(request.config.getoption("--target"))['db']
-    dbfixture = DbFixture(host=db_config['host'],name=db_config['name'],user=db_config['user'],password=db_config['password'])
+    dbfixture = DbFixture(host=db_config['host'], name=db_config['name'], user=db_config['user'], password=db_config['password'])
     def fin():
         dbfixture.destroy()
     request.addfinalizer(fin)
