@@ -1,6 +1,6 @@
-from sys import maxsize
-
 __author__ = 'tk'
+
+from sys import maxsize
 
 
 class Group:
