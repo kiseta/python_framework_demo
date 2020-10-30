@@ -1,1 +1,2 @@
 # Repository for Python Demo Framework (Selenium Webdriver and Pytest)
+Demo Test Automation Framework project with Selenium WebDriver and Python (OOP based), PyTest, Faker (Data Generator Library). Prerequisites: Requires local installation of WampServer Version 2.5 (Apache v2.4.9, PHP 5.512 , My SQL v5.6.17 and PHP Addressbook v8.2.5 (source: Git Hub or Sourceforge)
