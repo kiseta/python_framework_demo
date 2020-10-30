@@ -1,1 +1,1 @@
-# Repository for Python Training
+# Repository for Python Demo Framework (Selenium Webdriver and Pytest)
